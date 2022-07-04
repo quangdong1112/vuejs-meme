@@ -29,26 +29,29 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="meme">Meme</label>
-                        <select name="meme" id="" class="form-control">
-                            <option v-for=" meme in memes" :value="meme.name">{{ meme.name }}</option>
+                        <select v-model="meme" id="meme" class="form-control" @change="onChange($event)">
+                            <option v-for=" meme in memes" :value="meme.image">{{ meme.name }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="top-text">Top Text</label>
-                        <input type="text" id="top-text" class="form-control"
-                            placeholder="This text will appear on the top" value="Top Text">
+                        <input type="text" id="top-text" v-model="topText" class="form-control"
+                            placeholder="This text will appear on the top">
                     </div>
                     <div class="form-group">
                         <label for="bottom-text">Bottom Text</label>
-                        <input type="text" id="bottom-text" class="form-control"
-                            placeholder="This text will appear on the bottom" value="Bottom Text">
+                        <input type="text" id="bottom-text" v-model="bottomText" class="form-control"
+                            placeholder="This text will appear on the bottom">
                     </div>
                     <div class="form-group" v-if="isGenerate">
                         <label for="link-meme">Link</label>
                         <input type="text" id="link-meme" class="form-control" placeholder="Link meme" value="">
                     </div>
                     <button @click="generate()" class="btn btn-primary">Generate</button>
-                    <button class="btn btn-primary ms-2">Download</button>
+                    <button @click="downloadMeme()" class="btn btn-primary ms-2">Download</button>
+                </div>
+                <div class="col-lg-6">
+                    <canvas ref="canvas"></canvas>
                 </div>
             </div>
             <div class="row">
@@ -66,7 +69,7 @@
             </div>
             <ul class="pagination">
                 <li class="page-item" v-for="pageNumber in totalPages">
-                    <a class="page-link" href="#" @click="setPage(pageNumber)">{{ pageNumber }}</a>
+                    <button class="page-link" @click="setPage(pageNumber)">{{ pageNumber }}</button>
                 </li>
             </ul>
         </div>
