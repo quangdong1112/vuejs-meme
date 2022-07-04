@@ -1,0 +1,30 @@
+.navbar {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    margin-bottom: 20px;
+    
+}
+
+.container-fluid a {
+    text-decoration: none;
+    color: #777777;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.row-start {
+    margin-bottom: 20px;
+}
+
+.list-meme {
+    display: flex;
+    justify-content: space-between;
+}
