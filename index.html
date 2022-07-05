@@ -13,66 +13,6 @@
 
 <body>
     <div id="app">
-        <nav class="navbar">
-            <div class="container-fluid">
-                <a href="/" class="navbar-brand">
-                    <img v-bind:src="urlLogo" alt="" width="36" height="30" class="d-inline-block align-text-top">
-                    {{ textLogo }}
-                </a>
-            </div>
-        </nav>
-        <div class="container">
-            <div class="row row-start">
-                <div class="col-lg-12">
-                    <h1>{{ title }}</h1>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="meme">Meme</label>
-                        <select v-model="meme" id="meme" class="form-control" @change="onChange($event)">
-                            <option v-for=" meme in memes" :value="meme.image">{{ meme.name }}</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="top-text">Top Text</label>
-                        <input type="text" id="top-text" v-model="topText" class="form-control"
-                            placeholder="This text will appear on the top">
-                    </div>
-                    <div class="form-group">
-                        <label for="bottom-text">Bottom Text</label>
-                        <input type="text" id="bottom-text" v-model="bottomText" class="form-control"
-                            placeholder="This text will appear on the bottom">
-                    </div>
-                    <div class="form-group" v-if="isGenerate">
-                        <label for="link-meme">Link</label>
-                        <input type="text" id="link-meme" class="form-control" placeholder="Link meme" value="">
-                    </div>
-                    <button @click="generate()" class="btn btn-primary">Generate</button>
-                    <button @click="downloadMeme()" class="btn btn-primary ms-2">Download</button>
-                </div>
-                <div class="col-lg-6">
-                    <canvas ref="canvas"></canvas>
-                </div>
-            </div>
-            <div class="row">
-                <h1>Create Your Own Meme</h1>
-            </div>
-            <div class="col-lg-12 list-meme">
-                <div class="row">
-                    <div class="card col-md-4" v-for="meme in paginate">
-                        <img :src="meme.image" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="" class="card-text">{{ meme.name}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <ul class="pagination">
-                <li class="page-item" v-for="pageNumber in totalPages">
-                    <button class="page-link" @click="setPage(pageNumber)">{{ pageNumber }}</button>
-                </li>
-            </ul>
-        </div>
     </div>
 
     <script src="https://unpkg.com/vue@3"></script>
